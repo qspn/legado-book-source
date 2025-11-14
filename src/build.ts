@@ -4,9 +4,8 @@ import { buildBookSource } from "./generator";
 const bookSourceRoot = "./data";
 const srcFiles = await readdir(bookSourceRoot, { recursive: true });
 for (const srcFile of srcFiles) {
-	if (!srcFile.endsWith("result.json")) {
-		continue;
+	if (srcFile.endsWith("template.json")) {
+		console.log();
+		await buildBookSource(srcFile, bookSourceRoot);
 	}
-	await buildBookSource(srcFile, bookSourceRoot);
-	console.log();
 }

@@ -30,7 +30,7 @@ async function updateBookSourceDist(
 		bookSourceList.push(singleBookSource);
 	}
 	await Bun.write(outputPath, JSON.stringify(bookSourceList, null, "\t"));
-	console.log(`将独立的各个书源统一写入汇总书源: "${outputPath}"`);
+	console.log(`已汇总到统一书源: "${outputPath}"`);
 }
 
 async function buildBookSource(
@@ -74,11 +74,11 @@ async function buildBookSource(
 		await Bun.write(newBookSourcePath, bookSourceJson);
 		await updateBookSourceDist(bookSourceRoot, "./data/bookSource.json");
 		console.log(
-			`✅ 书源修改成功: "${newBookSourcePath}" (${bookSourceObj.bookSourceName})`,
+			`✅ 书源更新成功: "${newBookSourcePath}" (${bookSourceObj.bookSourceName})`,
 		);
 		return true;
 	} catch (error) {
-		console.error("❌ 书源构建失败:", error);
+		console.error("❌ 书源更新失败:", error);
 	}
 	return false;
 }
