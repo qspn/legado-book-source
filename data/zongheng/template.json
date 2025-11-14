@@ -1,0 +1,49 @@
+{
+	"ruleSearch": {
+		"checkKeyWord": "阴脉先生",
+		"bookList": "$.data.datas.list[*]",
+		"coverUrl": "https://static.zongheng.com/upload{{$.coverUrl}}",
+		"name": "@put:{bookId:\"$.bookId\"}$.name@js:java.htmlFormat(result)",
+		"author": "$.authorName",
+		"kind": "$.cateFineName",
+		"lastChapter": "$.chapterName",
+		"intro": "$.description",
+		"bookUrl": "https://www.zongheng.com/detail/{{$.bookId}}",
+		"wordCount": "$.totalWord"
+	},
+	"ruleBookInfo": {
+		"name": "@css:section.book-info div.book-info--title>span@text",
+		"intro": "##description:\\s*\"([^\"]+)\"##$1###<js>result.replace(/\\\\u[\\dA-F]{4}/gi,matched=>String.fromCharCode(Number.parseInt(matched.slice(2), 16)))</js>",
+		"author": "@css:section.author-info>a:nth-of-type(2)@text",
+		"kind": "@css:section.book-info div.book-info--tags>span.cateFineId@text",
+		"wordCount": "@css:section.book-info div.book-info--nums>div:last-child>span@text##$##万字",
+		"lastChapter": "@css:section.book-info div.book-info--chapter>div>a@text",
+		"coverUrl": "@css:section.book-info>div.book-info--coverImage>div.book-info--coverImage-cover>img.book-info--coverImage-img@src",
+		"tocUrl": "@get:{bookId}<js>cache.put('bookId',result);`https://www.zongheng.com/detail/{{result}}?tabsName=catalogue`</js>",
+		"canReName": ""
+	},
+	"ruleToc": {
+		"chapterList": "<js>(()=>{let d=java.post(\"https://bookapi.zongheng.com/api/chapter/getChapterList\",`bookId=${cache.get(\"bookId\")}`,{\"Content-Type\":\"application/x-www-form-urlencoded\"}).body();return JSON.parse(d).result.chapterList.map((b)=>b.chapterViewList).reduce((b,h)=>b.concat(h),[]).map((b)=>{return{chapterName:b.chapterName,chapterUrl:`https://read.zongheng.com/chapter/${b.bookId}/${b.chapterId}.html`,chapterInfo:[`${b.issueTime}`,`${b.wordNums} 字`].join(\" | \"),isVip:b.level>0,isPay:b.everBuy}})})();</js>",
+		"chapterName": "chapterName",
+		"chapterUrl": "chapterUrl",
+		"updateTime": "chapterInfo",
+		"isPay": "isPay",
+		"isVip": "isVip"
+	},
+	"ruleContent": {
+		"title": "@css:div.reader-box>div.title>div.title_txtbox@text",
+		"content": "@css:div.reader-box>div.content@html@js:java.htmlFormat(result)##《?{{title}}》?##",
+		"nextContentUrl": ""
+	},
+	"ruleReview": {},
+	"ruleExplore": {},
+	"bookSourceUrl": "https://www.zongheng.com",
+	"bookSourceType": 0,
+	"bookSourceName": "纵横中文网",
+	"bookSourceGroup": "清风自用,正版",
+	"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+	"searchUrl": "https://search.zongheng.com/search/book?keyword={{java.encodeURI(key)}}&sort=null&pageNo=1&pageNum=20&isFromHuayu=0",
+	"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:28:55)",
+	"enabled": true,
+	"loginUrl": ""
+}

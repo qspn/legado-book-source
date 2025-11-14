@@ -1,0 +1,48 @@
+{
+	"ruleSearch": {
+		"checkKeyWord": "伊塔纪元",
+		"bookList": "@css:div#result-list>div.book-img-text>ul>li.res-book-item",
+		"name": "@css:div.book-mid-info>h3.book-info-title>a>cite@text",
+		"author": "@css:div.book-mid-info>p.author>a.name@text||i@text",
+		"kind": "@css:div.book-mid-info>p.author>a:nth-of-type(2)@text",
+		"wordCount": "@css:div.book-right-info>div.total>p:first-child>span@text",
+		"lastChapter": "@css:div.book-mid-info>p.update>a@text##最新更新 ##",
+		"intro": "@css:div.book-mid-info>p.intro@html@js:java.htmlFormat(result)",
+		"coverUrl": "@css:div.book-img-box img@src",
+		"bookUrl": "@css:div.book-right-info>p.btn>a.red-btn@href"
+	},
+	"ruleBookInfo": {
+		"coverUrl": "@css:a#bookImg>img@src",
+		"name": "@css:div.book-info>div.book-info-top>h1#bookName@text",
+		"author": "@css:div.book-info>div.book-info-top>p.book-meta>span.author@text",
+		"kind": "@css:div.book-info>div.book-info-top>p.book-attribute>a:nth-of-type(1)@text",
+		"wordCount": "@css:div.book-info>div.book-info-top>p.count>em:nth-of-type(1)@text",
+		"intro": "@css:div.intro-detail>p#book-intro-detail@text",
+		"lastChapter": "@css:div.book-catalog>div#catalogContinue>a.link-jump>p>span.link@text"
+	},
+	"ruleToc": {
+		"chapterList": "@css:div.catalog-all>div.catalog-volume>ul.volume-chapters>li.chapter-item",
+		"chapterName": "a.chapter-name@text",
+		"chapterUrl": "a.chapter-name@href",
+		"formatJs": "",
+		"isVip": "em.chapter-locked@html<js>result</js>",
+		"updateTime": "a.chapter-name@title##{{book.name}} {{title}}##"
+	},
+	"ruleContent": {
+		"title": "@css:div.chapter-wrapper div.print>h1.title@text",
+		"content": "@css:div.chapter-wrapper div.print>main@html@js:java.htmlFormat(result)##添加书签##"
+	},
+	"ruleReview": {},
+	"ruleExplore": {},
+	"bookSourceUrl": "https://www.qidian.com",
+	"bookSourceType": 0,
+	"bookSourceName": "起点中文网",
+	"bookSourceGroup": "清风自用,正版",
+	"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+	"searchUrl": "/so/{{java.encodeURI(key)}}.html",
+	"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:28:49)",
+	"enabled": true,
+	"enabledCookieJar": true,
+	"loginUrl": "https://www.qidian.com/all/",
+	"variableComment": ""
+}

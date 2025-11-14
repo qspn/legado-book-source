@@ -1,0 +1,42 @@
+{
+	"ruleSearch": {
+		"checkKeyWord": "暴风城打工实录",
+		"bookList": "@css:div.books-section>ul.book-list>li",
+		"name": "@css:div.book-info>a.book-name@text",
+		"intro": "@css:div.book-info>div.summaries@text",
+		"author": "@css:div.book-info>div:nth-of-type(1)@text@js:result.split(\"最近更新\").shift()",
+		"lastChapter": "@css:div.book-info>div:nth-of-type(1)@text@js:result.split(\"最近更新：\").pop()",
+		"bookUrl": "@css:div.book-info>a.book-name@href",
+		"kind": "",
+		"coverUrl": "@css:a.thumb>img@data-original"
+	},
+	"ruleBookInfo": {
+		"name": "@css:div.book-info-box>div.book-info>div.book-title>span@text",
+		"author": "@css:div.user-info div.username@text",
+		"kind": "@css:div.book-info-box>div.book-info>div:not(.row)+div.row>div.tag:not(.tag-lianzai,.tag-qianyue)@text",
+		"wordCount": "@css:div.book-info-box>div.book-info>div.book-info-numbers>span:first-of-type@ownText##总字数：##",
+		"intro": "@css:div.book-brief@html@js:java.htmlFormat(result)",
+		"coverUrl": "@css:div.book-info-box>img.book-img@data-original"
+	},
+	"ruleToc": {
+		"chapterList": "@css:div#chapter_list>div.chapter>div.articles>span.chapter_item",
+		"chapterName": "a@text",
+		"chapterUrl": "a@href",
+		"isVip": "i.lock@js:java.log(result);true"
+	},
+	"ruleContent": {
+		"title": "@css:div.book-read-box>div.article-title@text",
+		"content": "<js>(()=>{let e=baseUrl.split(\"/\").pop(),s=\"i9MrAlKB\",t=java.post(\"https://www.cddaoyue.cn/chapter/get_book_chapter_detail_info\",[`chapter_id=${e}`,\"chapter_access_key=i9MrAlKB\"].join(\"&\"),{\"Content-Type\":\"application/x-www-form-urlencoded\"}).body(),c=JSON.parse(t);return JSON.stringify(c)+` 并非删除 只是还没逆向加密算法 和刺猬猫同一个架构好像`})();</js>"
+	},
+	"ruleReview": {},
+	"ruleExplore": {},
+	"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+	"loginUrl": "",
+	"bookSourceGroup": "清风自用,正版",
+	"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:28:32)",
+	"bookSourceName": "独阅读",
+	"bookSourceUrl": "https://www.cddaoyue.cn",
+	"bookSourceType": 0,
+	"searchUrl": "https://www.cddaoyue.cn/index/get_search_book_list/{{java.encodeURI(key)}}",
+	"enabled": true
+}

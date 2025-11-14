@@ -1,0 +1,19 @@
+{
+	"ruleSearch": {
+		"checkKeyWord": "异兽迷城",
+		"bookList": "@css:div.muye-search div.muye-search-book-list>div.search-book-item"
+	},
+	"ruleBookInfo": {},
+	"ruleToc": {},
+	"ruleContent": {},
+	"ruleReview": {},
+	"ruleExplore": {},
+	"bookSourceType": 0,
+	"bookSourceGroup": "清风自用,正版",
+	"bookSourceName": "番茄小说网",
+	"bookSourceUrl": "https://fanqienovel.com/",
+	"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+	"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:35:05)",
+	"searchUrl": "/search/{{java.encodeURI(key)}}/",
+	"enabled": false
+}

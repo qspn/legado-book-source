@@ -1,0 +1,202 @@
+[
+	{
+		"ruleSearch": {
+			"checkKeyWord": "伊塔纪元",
+			"bookList": "@css:div#result-list>div.book-img-text>ul>li.res-book-item",
+			"name": "@css:div.book-mid-info>h3.book-info-title>a>cite@text",
+			"author": "@css:div.book-mid-info>p.author>a.name@text||i@text",
+			"kind": "@css:div.book-mid-info>p.author>a:nth-of-type(2)@text",
+			"wordCount": "@css:div.book-right-info>div.total>p:first-child>span@text",
+			"lastChapter": "@css:div.book-mid-info>p.update>a@text##最新更新 ##",
+			"intro": "@css:div.book-mid-info>p.intro@html@js:java.htmlFormat(result)",
+			"coverUrl": "@css:div.book-img-box img@src",
+			"bookUrl": "@css:div.book-right-info>p.btn>a.red-btn@href"
+		},
+		"ruleBookInfo": {
+			"coverUrl": "@css:a#bookImg>img@src",
+			"name": "@css:div.book-info>div.book-info-top>h1#bookName@text",
+			"author": "@css:div.book-info>div.book-info-top>p.book-meta>span.author@text",
+			"kind": "@css:div.book-info>div.book-info-top>p.book-attribute>a:nth-of-type(1)@text",
+			"wordCount": "@css:div.book-info>div.book-info-top>p.count>em:nth-of-type(1)@text",
+			"intro": "@css:div.intro-detail>p#book-intro-detail@text",
+			"lastChapter": "@css:div.book-catalog>div#catalogContinue>a.link-jump>p>span.link@text"
+		},
+		"ruleToc": {
+			"chapterList": "@css:div.catalog-all>div.catalog-volume>ul.volume-chapters>li.chapter-item",
+			"chapterName": "a.chapter-name@text",
+			"chapterUrl": "a.chapter-name@href",
+			"formatJs": "",
+			"isVip": "em.chapter-locked@html<js>result</js>",
+			"updateTime": "a.chapter-name@title##{{book.name}} {{title}}##"
+		},
+		"ruleContent": {
+			"title": "@css:div.chapter-wrapper div.print>h1.title@text",
+			"content": "@css:div.chapter-wrapper div.print>main@html@js:java.htmlFormat(result)##添加书签##"
+		},
+		"ruleReview": {},
+		"ruleExplore": {},
+		"bookSourceUrl": "https://www.qidian.com",
+		"bookSourceType": 0,
+		"bookSourceName": "起点中文网",
+		"bookSourceGroup": "清风自用,正版",
+		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+		"searchUrl": "/so/{{java.encodeURI(key)}}.html",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:28:52)",
+		"enabled": true,
+		"enabledCookieJar": true,
+		"loginUrl": "https://www.qidian.com/all/",
+		"variableComment": ""
+	},
+	{
+		"ruleSearch": {
+			"checkKeyWord": "阴脉先生",
+			"bookList": "$.data.datas.list[*]",
+			"coverUrl": "https://static.zongheng.com/upload{{$.coverUrl}}",
+			"name": "@put:{bookId:\"$.bookId\"}$.name@js:java.htmlFormat(result)",
+			"author": "$.authorName",
+			"kind": "$.cateFineName",
+			"lastChapter": "$.chapterName",
+			"intro": "$.description",
+			"bookUrl": "https://www.zongheng.com/detail/{{$.bookId}}",
+			"wordCount": "$.totalWord"
+		},
+		"ruleBookInfo": {
+			"name": "@css:section.book-info div.book-info--title>span@text",
+			"intro": "##description:\\s*\"([^\"]+)\"##$1###<js>result.replace(/\\\\u[\\dA-F]{4}/gi,matched=>String.fromCharCode(Number.parseInt(matched.slice(2), 16)))</js>",
+			"author": "@css:section.author-info>a:nth-of-type(2)@text",
+			"kind": "@css:section.book-info div.book-info--tags>span.cateFineId@text",
+			"wordCount": "@css:section.book-info div.book-info--nums>div:last-child>span@text##$##万字",
+			"lastChapter": "@css:section.book-info div.book-info--chapter>div>a@text",
+			"coverUrl": "@css:section.book-info>div.book-info--coverImage>div.book-info--coverImage-cover>img.book-info--coverImage-img@src",
+			"tocUrl": "@get:{bookId}<js>cache.put('bookId',result);`https://www.zongheng.com/detail/{{result}}?tabsName=catalogue`</js>",
+			"canReName": ""
+		},
+		"ruleToc": {
+			"chapterList": "<js>(()=>{let d=java.post(\"https://bookapi.zongheng.com/api/chapter/getChapterList\",`bookId=${cache.get(\"bookId\")}`,{\"Content-Type\":\"application/x-www-form-urlencoded\"}).body();return JSON.parse(d).result.chapterList.map((b)=>b.chapterViewList).reduce((b,h)=>b.concat(h),[]).map((b)=>{return{chapterName:b.chapterName,chapterUrl:`https://read.zongheng.com/chapter/${b.bookId}/${b.chapterId}.html`,chapterInfo:[`${b.issueTime}`,`${b.wordNums} 字`].join(\" | \"),isVip:b.level>0,isPay:b.everBuy}})})();</js>",
+			"chapterName": "chapterName",
+			"chapterUrl": "chapterUrl",
+			"updateTime": "chapterInfo",
+			"isPay": "isPay",
+			"isVip": "isVip"
+		},
+		"ruleContent": {
+			"title": "@css:div.reader-box>div.title>div.title_txtbox@text",
+			"content": "@css:div.reader-box>div.content@html@js:java.htmlFormat(result)##《?{{title}}》?##",
+			"nextContentUrl": ""
+		},
+		"ruleReview": {},
+		"ruleExplore": {},
+		"bookSourceUrl": "https://www.zongheng.com",
+		"bookSourceType": 0,
+		"bookSourceName": "纵横中文网",
+		"bookSourceGroup": "清风自用,正版",
+		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+		"searchUrl": "https://search.zongheng.com/search/book?keyword={{java.encodeURI(key)}}&sort=null&pageNo=1&pageNum=20&isFromHuayu=0",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 15:10:38)",
+		"enabled": true,
+		"loginUrl": ""
+	},
+	{
+		"ruleSearch": {
+			"checkKeyWord": "暴风城打工实录",
+			"bookList": "@css:div.books-section>ul.book-list>li",
+			"name": "@css:div.book-info>a.book-name@text",
+			"intro": "@css:div.book-info>div.summaries@text",
+			"author": "@css:div.book-info>div:nth-of-type(1)@text@js:result.split(\"最近更新\").shift()",
+			"lastChapter": "@css:div.book-info>div:nth-of-type(1)@text@js:result.split(\"最近更新：\").pop()",
+			"bookUrl": "@css:div.book-info>a.book-name@href",
+			"kind": "",
+			"coverUrl": "@css:a.thumb>img@data-original"
+		},
+		"ruleBookInfo": {
+			"name": "@css:div.book-info-box>div.book-info>div.book-title>span@text",
+			"author": "@css:div.user-info div.username@text",
+			"kind": "@css:div.book-info-box>div.book-info>div:not(.row)+div.row>div.tag:not(.tag-lianzai,.tag-qianyue)@text",
+			"wordCount": "@css:div.book-info-box>div.book-info>div.book-info-numbers>span:first-of-type@ownText##总字数：##",
+			"intro": "@css:div.book-brief@html@js:java.htmlFormat(result)",
+			"coverUrl": "@css:div.book-info-box>img.book-img@data-original"
+		},
+		"ruleToc": {
+			"chapterList": "@css:div#chapter_list>div.chapter>div.articles>span.chapter_item",
+			"chapterName": "a@text",
+			"chapterUrl": "a@href",
+			"isVip": "i.lock@js:java.log(result);true"
+		},
+		"ruleContent": {
+			"title": "@css:div.book-read-box>div.article-title@text",
+			"content": "<js>(()=>{let e=baseUrl.split(\"/\").pop(),s=\"i9MrAlKB\",t=java.post(\"https://www.cddaoyue.cn/chapter/get_book_chapter_detail_info\",[`chapter_id=${e}`,\"chapter_access_key=i9MrAlKB\"].join(\"&\"),{\"Content-Type\":\"application/x-www-form-urlencoded\"}).body(),c=JSON.parse(t);return JSON.stringify(c)+` 并非删除 只是还没逆向加密算法 和刺猬猫同一个架构好像`})();</js>"
+		},
+		"ruleReview": {},
+		"ruleExplore": {},
+		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+		"loginUrl": "",
+		"bookSourceGroup": "清风自用,正版",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:36:11)",
+		"bookSourceName": "独阅读",
+		"bookSourceUrl": "https://www.cddaoyue.cn",
+		"bookSourceType": 0,
+		"searchUrl": "https://www.cddaoyue.cn/index/get_search_book_list/{{java.encodeURI(key)}}",
+		"enabled": true
+	},
+	{
+		"ruleSearch": {
+			"checkKeyWord": "东京声士",
+			"bookList": "@css:div.rank-book-list>ul>li",
+			"name": "@css:div.cnt>p.tit>a@text",
+			"author": "@css:div.cnt>p:nth-of-type(2)>a@text",
+			"lastChapter": "@css:div.cnt>p:nth-of-type(3)@text##最近更新：##",
+			"kind": "##(.)##无###",
+			"wordCount": "##(.)##无###",
+			"intro": "@css:div.cnt>div.desc@html@js:java.htmlFormat(result)",
+			"coverUrl": "@css:a.cover>img@src",
+			"bookUrl": "@css:a.cover@href"
+		},
+		"ruleBookInfo": {
+			"name": "@css:div.book-detail div.book-info>h1.title@ownText",
+			"author": "@css:div.book-detail div.book-info>h1.title>span>a@text",
+			"kind": "@css:div.book-detail div.book-bd div.book-intro div.book-property>span@text<js>Object.values(result).filter((item)=>item.startsWith(\"小说类别\")).map((item)=>item.split(\"：\").pop()).pop()</js>",
+			"wordCount": "@css:div.book-detail div.book-info>p.book-grade>b:last-child@text",
+			"intro": "@css:div.book-detail div.book-bd div.book-intro div.book-desc@text",
+			"lastChapter": "@css:div.book-detail div.book-info>a>p.update-time@text##最后更新：##",
+			"coverUrl": "@css:div.book-detail div.cover>img@src"
+		},
+		"ruleToc": {
+			"chapterList": "<js>(()=>{let t=baseUrl.split(\"/\").pop(),o=java.post(\"https://www.ciweimao.com/chapter/get_chapter_list_in_chapter_detail\",[`book_id=${t}`,\"chapter_id=0\",\"orderby=0\"].join(\"&\"),{\"Content-Type\":\"application/x-www-form-urlencoded; charset=UTF-8\"}).body();return java.setContent(o),java.getElements(\"@css:div.book-chapter-box>ul.book-chapter-list>li\")})();</js>",
+			"chapterName": "a@text",
+			"chapterUrl": "a@href"
+		},
+		"ruleContent": {
+			"title": "@css:div#J_BookCnt>div.read-hd>h1.chapter@text",
+			"content": "<js>(()=>{let e=baseUrl.split(\"/\").pop(),s=\"i9MrAlKB\",t=java.post(\"https://www.ciweimao.com/chapter/get_book_chapter_detail_info\",[`chapter_id=${e}`,\"chapter_access_key=i9MrAlKB\"].join(\"&\"),{\"Content-Type\":\"application/x-www-form-urlencoded\"}).body(),c=JSON.parse(t);return`${JSON.stringify(c)} 并非删除 只是还没逆向加密算法`})();</js>"
+		},
+		"ruleReview": {},
+		"ruleExplore": {},
+		"bookSourceType": 0,
+		"bookSourceGroup": "清风自用,正版",
+		"bookSourceName": "刺猬猫阅读",
+		"bookSourceUrl": "https://www.ciweimao.com",
+		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:36:02)",
+		"searchUrl": "/get-search-book-list/0-0-0-0-0-0/%E5%85%A8%E9%83%A8/{{java.encodeURI(key)}}/1",
+		"enabled": true
+	},
+	{
+		"ruleSearch": {
+			"checkKeyWord": "异兽迷城",
+			"bookList": "@css:div.muye-search div.muye-search-book-list>div.search-book-item"
+		},
+		"ruleBookInfo": {},
+		"ruleToc": {},
+		"ruleContent": {},
+		"ruleReview": {},
+		"ruleExplore": {},
+		"bookSourceType": 0,
+		"bookSourceGroup": "清风自用,正版",
+		"bookSourceName": "番茄小说网",
+		"bookSourceUrl": "https://fanqienovel.com/",
+		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:35:22)",
+		"searchUrl": "/search/{{java.encodeURI(key)}}/",
+		"enabled": false
+	}
+]

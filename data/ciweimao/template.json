@@ -1,0 +1,42 @@
+{
+	"ruleSearch": {
+		"checkKeyWord": "东京声士",
+		"bookList": "@css:div.rank-book-list>ul>li",
+		"name": "@css:div.cnt>p.tit>a@text",
+		"author": "@css:div.cnt>p:nth-of-type(2)>a@text",
+		"lastChapter": "@css:div.cnt>p:nth-of-type(3)@text##最近更新：##",
+		"kind": "##(.)##无###",
+		"wordCount": "##(.)##无###",
+		"intro": "@css:div.cnt>div.desc@html@js:java.htmlFormat(result)",
+		"coverUrl": "@css:a.cover>img@src",
+		"bookUrl": "@css:a.cover@href"
+	},
+	"ruleBookInfo": {
+		"name": "@css:div.book-detail div.book-info>h1.title@ownText",
+		"author": "@css:div.book-detail div.book-info>h1.title>span>a@text",
+		"kind": "@css:div.book-detail div.book-bd div.book-intro div.book-property>span@text<js>Object.values(result).filter((item)=>item.startsWith(\"小说类别\")).map((item)=>item.split(\"：\").pop()).pop()</js>",
+		"wordCount": "@css:div.book-detail div.book-info>p.book-grade>b:last-child@text",
+		"intro": "@css:div.book-detail div.book-bd div.book-intro div.book-desc@text",
+		"lastChapter": "@css:div.book-detail div.book-info>a>p.update-time@text##最后更新：##",
+		"coverUrl": "@css:div.book-detail div.cover>img@src"
+	},
+	"ruleToc": {
+		"chapterList": "<js>(()=>{let t=baseUrl.split(\"/\").pop(),o=java.post(\"https://www.ciweimao.com/chapter/get_chapter_list_in_chapter_detail\",[`book_id=${t}`,\"chapter_id=0\",\"orderby=0\"].join(\"&\"),{\"Content-Type\":\"application/x-www-form-urlencoded; charset=UTF-8\"}).body();return java.setContent(o),java.getElements(\"@css:div.book-chapter-box>ul.book-chapter-list>li\")})();</js>",
+		"chapterName": "a@text",
+		"chapterUrl": "a@href"
+	},
+	"ruleContent": {
+		"title": "@css:div#J_BookCnt>div.read-hd>h1.chapter@text",
+		"content": "<js>(()=>{let e=baseUrl.split(\"/\").pop(),s=\"i9MrAlKB\",t=java.post(\"https://www.ciweimao.com/chapter/get_book_chapter_detail_info\",[`chapter_id=${e}`,\"chapter_access_key=i9MrAlKB\"].join(\"&\"),{\"Content-Type\":\"application/x-www-form-urlencoded\"}).body(),c=JSON.parse(t);return`${JSON.stringify(c)} 并非删除 只是还没逆向加密算法`})();</js>"
+	},
+	"ruleReview": {},
+	"ruleExplore": {},
+	"bookSourceType": 0,
+	"bookSourceGroup": "清风自用,正版",
+	"bookSourceName": "刺猬猫阅读",
+	"bookSourceUrl": "https://www.ciweimao.com",
+	"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
+	"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:28:06)",
+	"searchUrl": "/get-search-book-list/0-0-0-0-0-0/%E5%85%A8%E9%83%A8/{{java.encodeURI(key)}}/1",
+	"enabled": true
+}
