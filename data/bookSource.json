@@ -41,7 +41,7 @@
 		"bookSourceGroup": "清风自用,正版",
 		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
 		"searchUrl": "/so/{{java.encodeURI(key)}}.html",
-		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:28:52)",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 15:49:28)",
 		"enabled": true,
 		"enabledCookieJar": true,
 		"loginUrl": "https://www.qidian.com/all/",
@@ -92,7 +92,7 @@
 		"bookSourceGroup": "清风自用,正版",
 		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
 		"searchUrl": "https://search.zongheng.com/search/book?keyword={{java.encodeURI(key)}}&sort=null&pageNo=1&pageNum=20&isFromHuayu=0",
-		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 15:10:38)",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 15:49:42)",
 		"enabled": true,
 		"loginUrl": ""
 	},
@@ -131,7 +131,7 @@
 		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
 		"loginUrl": "",
 		"bookSourceGroup": "清风自用,正版",
-		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:36:11)",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 15:49:28)",
 		"bookSourceName": "独阅读",
 		"bookSourceUrl": "https://www.cddaoyue.cn",
 		"bookSourceType": 0,
@@ -176,7 +176,7 @@
 		"bookSourceName": "刺猬猫阅读",
 		"bookSourceUrl": "https://www.ciweimao.com",
 		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
-		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:36:02)",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 15:49:28)",
 		"searchUrl": "/get-search-book-list/0-0-0-0-0-0/%E5%85%A8%E9%83%A8/{{java.encodeURI(key)}}/1",
 		"enabled": true
 	},
@@ -195,7 +195,7 @@
 		"bookSourceName": "番茄小说网",
 		"bookSourceUrl": "https://fanqienovel.com/",
 		"header": "{\"User-Agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\",\"Accept-Language\":\"zh-CN,zh; q=0.9\"}",
-		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 14:35:22)",
+		"bookSourceComment": "仅封面/简介/章节信息，无正文 (t.me/qfbsz @2025/11/14 15:49:28)",
 		"searchUrl": "/search/{{java.encodeURI(key)}}/",
 		"enabled": false
 	}

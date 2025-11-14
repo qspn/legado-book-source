@@ -11,8 +11,17 @@ $ bun run dev
 $ bun run build
 ```
 
-## Note
+阅读 APP >「订阅」标签页 > 左上「规则订阅」> 添加新的规则订阅（类型：`书源`）
+```
+# GitHub
+https://raw.githubusercontent.com/qspn/legado-book-source/refs/heads/main/data/bookSource.json
+
+# Cloudflare CDN
+https://legado.kksk.eu.org/bookSource.json
+```
+
+## Todo
 
 ```javascript
-//
+// Note
 ```

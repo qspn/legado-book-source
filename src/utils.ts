@@ -1,5 +1,3 @@
-import { readdir } from "node:fs/promises";
-
 // biome-ignore lint/suspicious/noExplicitAny: function warpper
 function debounce(func: (...args: any[]) => any, delay: number) {
 	let timeout: NodeJS.Timeout;
@@ -42,26 +40,4 @@ function createPathProxy(obj: Record<string, unknown>) {
 	};
 }
 
-async function buildAllBookSource(
-	bookSourceRoot: string = ".",
-	outputPath: string = "./dist/bookSource.json",
-) {
-	const bookSourceList = [];
-	const bookSourceFileList = await readdir(bookSourceRoot, { recursive: true });
-	for (const bookSourceFile of bookSourceFileList) {
-		if (bookSourceFile.startsWith("all")) {
-			continue;
-		}
-		if (!bookSourceFile.endsWith("result.json")) {
-			continue;
-		}
-		const singleBookSource = await Bun.file(
-			`${bookSourceRoot}/${bookSourceFile}`,
-		).json();
-		bookSourceList.push(singleBookSource);
-	}
-	await Bun.write(outputPath, JSON.stringify(bookSourceList, null, "\t"));
-	console.log(`将独立的各个书源统一写入汇总书源: "${outputPath}"`);
-}
-
-export { debounce, createPathProxy, buildAllBookSource };
+export { debounce, createPathProxy };
